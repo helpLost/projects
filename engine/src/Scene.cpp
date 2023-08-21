@@ -1,5 +1,4 @@
 #include <Scene.hpp>
-bool convert(std::string filePath, std::string fileDirectory, std::string fileFormat);
 namespace prj
 {
     Scene::Scene(bool cutscene, std::vector<Model> models, std::vector<Filter> filters, std::string inputList)
@@ -7,8 +6,4 @@ namespace prj
     {
 
     }
-}
-bool convert(std::string filePath, std::string fileDirectory, std::string fileFormat) 
-{
-
 }

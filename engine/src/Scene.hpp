@@ -4,11 +4,23 @@
     #include <Utilities.hpp>
     namespace prj
     {
-        class Filter {};
+        struct Vertex { glm::vec3 position, normal, tangent, bitagent; glm::vec2 texture; int bones[4]; float weights[4];};
+        struct Texture { unsigned ID; std::string path, type; };
 
+        class Filter {};
         class Mesh
         {
+            private:
+                std::vector<Vertex> m_VERTICES;
+                std::vector<unsigned> m_INDICES;
+                std::vector<Texture> m_TEXTURES;
+                unsigned VAO;
 
+                bool readMesh(std::string filePath), readTexture(std::string filePath, std::string fileDirectory);
+            public:
+                Mesh(std::vector<Vertex> vertices, std::vector<unsigned> indices, std::vector<Texture> textures) 
+                    :m_VERTICES(vertices), m_INDICES(indices), m_TEXTURES(textures) { setupBuffer(); }
+                void setupBuffer(), draw();
         };
         
         class Model
