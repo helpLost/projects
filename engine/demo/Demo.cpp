@@ -1,8 +1,8 @@
-#include <Projects.hpp>
+#include <Engine.hpp>
 int main() 
 {
-    prj::Window *window = new prj::Window("Hello World", 1000, 500, 1.0f, 1.0f, 1.0f);
+    prj::Window *window = new prj::Window("Hello World", "leto.png", 1000, 500);
     while(!window->closed()) { window->update(); }
-
+    utl::end("");
     return 0;
 }

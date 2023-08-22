@@ -2,6 +2,7 @@
 #define SRC_SCENE_HPP
 
     #include <Utilities.hpp>
+    #include <Shader.hpp>
     namespace prj
     {
         struct Vertex { glm::vec3 position, normal, tangent, bitagent; glm::vec2 texture; int bones[4]; float weights[4];};
@@ -18,9 +19,8 @@
 
                 bool readMesh(std::string filePath), readTexture(std::string filePath, std::string fileDirectory);
             public:
-                Mesh(std::vector<Vertex> vertices, std::vector<unsigned> indices, std::vector<Texture> textures) 
-                    :m_VERTICES(vertices), m_INDICES(indices), m_TEXTURES(textures) { setupBuffer(); }
-                void setupBuffer(), draw();
+                Mesh(std::vector<Vertex> vertices, std::vector<unsigned> indices, std::vector<Texture> textures);
+                void setupBuffer(), draw(Shader &shader);
         };
         
         class Model
@@ -29,6 +29,7 @@
                 glm::vec3 m_POS, m_SCALE;
             public:
                 Model(std::string filepath);
+                ~Model() { std::cout << "out"; }
                 void draw();
         };
 

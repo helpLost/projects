@@ -11,6 +11,7 @@
     #include <fstream>
 
     #include <GLAD/glm.hpp>
+    #include <GLAD/gtc/matrix_transform.hpp>
     #include <GLAD/glad.h>
     #include <GLFW/glfw3.h>
 
@@ -19,7 +20,7 @@
         enum Switch { open, closed };
         enum Movement { forward, backward, right, left, up, down };
 
-        inline int end(std::string message) { glfwTerminate(); if (!message.empty()) { throw new std::runtime_error(message.c_str()); } return 0; }
+        inline int end(std::string message) { glfwTerminate(); if (!message.empty()) { throw std::runtime_error(message.c_str()); } return 0; }
     }
 
 #endif
