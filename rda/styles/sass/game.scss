@@ -1,0 +1,67 @@
+$fmain: 'Lucida Sans', 'Lucida Grande';
+$fsecondary: Georgia, serif;
+$ftertiary: Times, 'Times New Roman';
+
+body {
+    width: 100vw; height: 100vh;
+    padding: 0; margin: 0; overflow: hidden;
+    background-color: whitesmoke;
+    header {
+        height: 15vh;
+        overflow: hidden;
+        user-select: none;
+        #civ {
+            width: 35vw;
+            background-color: white; opacity: 0.7; overflow: hidden; white-space: nowrap;
+            padding: 10px; margin: 1vw;
+            border-radius: 5px; box-shadow: 3px 3px 2px darkgrey;
+            p { padding: 0; margin: 0; }
+            #name { font-family: $fmain; font-size: 22px; font-weight: 750; }
+            #ruler { font-family: $fsecondary; font-size: 17px; margin-bottom: 1vh; }
+            #info { p { display: inline; font-family: $ftertiary; font-size: 16px;} #date::after { font-family: $fsecondary; content: ' | '; } }
+        }
+        #links {
+            position: absolute; top: 1vw; left: 38.5vw;
+            background-color: white; opacity: 0.7; overflow: hidden;
+            padding: 7px 10px 7px 10px;
+            border-radius: 5px; box-shadow: 3px 3px 2px darkgrey;
+            span::after { content: ' • '; }
+            a { color: black; font-family: $fmain; font-size: 15px; text-decoration: none; &:hover { text-decoration: underline; } }
+        }
+        #source {
+            position: absolute; top: 7vh; left: 38.5vw;
+            background-color: white; opacity: 0.7; overflow: hidden;
+            padding: 7px 10px 7px 10px;
+            border-radius: 5px; box-shadow: 3px 3px 2px darkgrey;
+            color: black; font-family: $fmain; font-size: 15px; text-decoration: none; 
+            &:hover { text-decoration: underline; }
+        }
+    }
+    main {
+        width: 98vw; height: 83vh;
+        position: absolute; top: 15vh; left: 1vw; overflow: hidden;
+        .select {
+            overflow: hidden; user-select: none;
+            opacity: 0.7;
+            .tab {
+                background-color: white;
+                padding: 5px;
+                border: 1px solid darkgrey; border-top-left-radius: 5px; border-top-right-radius: 5px;
+                font-family: $fmain; font-size: 14px; font-weight: 750;
+                margin-right: 5px;
+                &:hover { background-color: whitesmoke; }
+                &.selected { border-bottom: 1px solid white; &:hover { border-bottom: 1px solid whitesmoke; }}
+            }
+            .window {
+                background-color: white; box-shadow: 3px 3px 2px darkgrey;
+                border-left: 1px solid darkgrey; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px;
+                padding: 10px;
+                &.unshown { display: none; }
+            }
+        }
+        #subjects {
+            position: absolute;
+            .window { width: 35vw; height: 40vh; }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+$fmain: 'Lucida Sans', 'Lucida Grande';
+$fsecondary: Georgia, serif;
+
+$tmain: rgb(225, 225, 225);
+$tsecondary: rgb(245, 245, 245);
+
+$cmain: rgb(25, 25, 25);
+$csecondary: rgb(37, 37, 37);
+
+body {
+    width: 100vw; height: 100vh;
+    margin: 0; padding: 0;
+    background-color: rgb(25, 25, 25);
+    overflow: hidden;
+    header {
+        width: 100vw; height: 7vh;
+        background-color: rgb(37, 37, 37);
+        display: flex;
+        align-items: center;
+        a { color: $tmain; text-decoration: none; font-family: $fmain; &:hover { color: $tsecondary; text-decoration: underline;} }
+        .title {
+            position: relative; left: 2vw;
+            font-size: 20px; font-weight: bold;
+        }
+        #links {
+            position: relative; left: 5vw;
+            display: inline-block;
+            #faq, #lists, #author { font-size: 17px; font-family: $fsecondary; }
+            #faq { margin-right: 48vw; }
+            #lists { margin-right: 2vw; }
+        }
+    }
+    main {
+        position: absolute; top: 7vh; width: 100vw;
+        #game {
+            position: absolute; top: 2vh; left: 50%; transform: translateX(-50%);
+            text-align: center; font-family: $fmain; font-size: 19px; color: $tmain; font-weight: bold;
+            background-color: $csecondary; padding: 30px; border-radius: 10px;
+            #play {
+                margin: 0; margin-bottom: 15px; padding: 0;
+            }
+            #go {
+                font-family: $fsecondary; font-size: 18px; color: $tsecondary;
+                padding: 10px 25px 10px 25px; border-radius: 5px; border: 1px solid transparent;
+                background-color: rgb(32, 32, 32);
+                &:hover { background-color: $cmain; border: 1px solid $csecondary; }
+            }
+        }
+    }
+}

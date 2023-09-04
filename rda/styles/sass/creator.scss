@@ -1,0 +1,49 @@
+$fmain: 'Lucida Sans', 'Lucida Grande';
+$fsecondary: Georgia, serif;
+
+body {
+    width: 100vw; height: 100vh;
+    padding: 0; margin: 0; overflow: hidden;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    form {
+        width: 75vw; height: 75vh;
+        background-color: whitesmoke; opacity: 0.8;
+        border-radius: 5px; box-shadow: 4px 4px 2px lightgrey;
+        padding: 0.5vw;
+        user-select: none;
+        div { font-family: $fmain; div { display: block; margin-bottom: 1vh; } }
+        input[type=text], select {
+            background-color: white; border: 1px solid black;
+            padding: 3px;
+            font-size: 15px; font-family: $fsecondary;
+            &:focus { outline: none; }
+            &:hover { background-color: whitesmoke; }
+        }
+        #sidebar {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            #realm, #ethnicity, #church {
+                margin-left: 3vw;
+                margin-bottom: 5vh;
+            }
+            #game {
+                margin-left: 3vw;
+            }
+        }
+        #controls {
+            display: grid;
+            position: absolute; top: 50%; left: 57%; transform: translateY(-50%);
+            button {
+                border: 1px solid black; border-radius: 5px;
+                background-color: white; box-shadow: 3px 3px 1px lightgrey;
+                font-family: $fsecondary; font-size: 21px;
+                padding: 10px 20px 10px 20px;
+                margin-bottom: 1vh;
+                &:hover { background-color: whitesmoke; }
+                &:focus { box-shadow: 3px 3px 1px transparent; }
+            }
+        }
+    }
+}

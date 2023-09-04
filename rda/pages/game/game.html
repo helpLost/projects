@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ang="en-US" dir="ltr">
+    <head>
+        <!--- Metadata --->
+        <meta charset="UTF-8"> <title>Rising Dawns | Game</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content = "Adrian Lost, Specter">
+        <meta name="description" content = "Play Rising Dawns here.">
+        <meta name="keywords" content = "rising dawns, rda, rising dawns adventure, browser game, civbuilder, empire builder">
+        <!---------------->
+        <!--- Resources --->
+        <link rel="stylesheet" href = "../../styles/css/game.css" type = "text/css">
+        <link rel="stylesheet" href = "../../styles/css/fontawesome.css" type = "text/css">
+        <script src = "../../scripts/game.js" type = "module"></script>
+        <!----------------->
+    </head>
+    <body class = "tribal">
+        <!--- Background Image Container --->
+        <div id = "container"></div>
+        <!---------------------------------->
+        <header>
+            <!--- Civilization Information --->
+            <div id = "civ">
+                <p id = "name">Retrieving...</p>
+                <p id = "ruler">Retrieving...</p>
+                <div id = "info"><p id = "date">Retrieving...</p><p id = "region">Retrieving...</p></div>
+            </div>
+            <!-------------------------------->
+            <!--- Hyperlinks to Related Resources --->
+            <div id = "links">
+                <a id = "faq" href = "../site/faq.html" draggable="false">FAQ</a><span></span>
+                <a id = "author" href = "../site/author.html" draggable="false">About the Developer</a><span></span>
+                <a id = "lists" href = "../site/lists.html" draggable="false">Updates</a>
+            </div>
+            <a id = "source" href = "https://github.com/helplost/rda" draggable="false">Visit the Github Repository</a>
+            <!--------------------------------------->
+        </header>
+        <main>
+            <div id = "subjects" class = "select">
+                <button id = "resources" class = "tab selected">Resources</button><button id = "workers" class = "tab unselected">Workers</button><button id = "happiness" class = "tab unselected">Happiness</button><button id = "collection" class = "tab unselected">Collection</button>
+                <div id = "rwindow" class = "window shown">
+                    <div id = "food"><label for = "fharvest">Food: Retrieving...</label><button id = "fharvest">Gather</button></div>
+                    <div id = "wood"><label for = "wharvest">Wood: Retrieving...</label><button id = "wharvest">Gather</button></div>
+                    <div id = "stone"><label for = "sharvest">Stone: Retrieving...</label><button id = "sharvest">Gather</button></div>
+
+                    <p id = "herbs">Herbs: Retrieving...</p>
+                    <p id = "roots">Roots: Retrieving...</p>
+                    <p id = "ore">Ore: Retrieving...</p>
+                    <p id = "hide">Hide: Retrieving...</p>
+                </div>
+                <div id = "wwindow" class = "window unshown">
+                    <div id = "hunters">hunters</div>
+                    <div id = "woodcutters">woodcutters</div>
+                    <div id = "stonegatherers">miners</div>
+                    <div id = "protectors">protectors</div>
+                </div>
+                <div id = "hwindow" class = "window unshown">happ</div>
+                <div id = "cwindow" class = "window unshown">coll</div>
+            </div>
+        </main>
+    </body>
+</html>
