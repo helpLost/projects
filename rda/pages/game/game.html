@@ -19,6 +19,7 @@
         <!--- Background Image Container --->
         <div id = "container"></div>
         <!---------------------------------->
+        <!--- Game & Save File Information --->
         <header>
             <!--- Civilization Information --->
             <div id = "civ">
@@ -36,14 +37,16 @@
             <a id = "source" href = "https://github.com/helplost/rda" draggable="false">Visit the Github Repository</a>
             <!--------------------------------------->
         </header>
+        <!------------------------------------>
+        <!--- Game Controls & Functionality --->
         <main>
             <div id = "subjects" class = "select">
                 <button id = "resources" class = "tab selected">Resources</button><button id = "workers" class = "tab unselected">Workers</button><button id = "happiness" class = "tab unselected">Happiness</button><button id = "collection" class = "tab unselected">Collection</button>
                 <div id = "rwindow" class = "window shown">
-                    <div id = "food"><label for = "fharvest">Food: Retrieving...</label><button id = "fharvest">Gather</button></div>
-                    <div id = "wood"><label for = "wharvest">Wood: Retrieving...</label><button id = "wharvest">Gather</button></div>
-                    <div id = "stone"><label for = "sharvest">Stone: Retrieving...</label><button id = "sharvest">Gather</button></div>
-
+                    <div id = "food"><label id = "flabel" for = "fharvest">Food: Retrieving...</label><button id = "fharvest">Gather</button></div>
+                    <div id = "wood"><label id = "wlabel" for = "wharvest">Wood: Retrieving...</label><button id = "wharvest">Gather</button></div>
+                    <div id = "stone"><label id = "slabel" for = "sharvest">Stone: Retrieving...</label><button id = "sharvest">Gather</button></div>
+                    
                     <p id = "herbs">Herbs: Retrieving...</p>
                     <p id = "roots">Roots: Retrieving...</p>
                     <p id = "ore">Ore: Retrieving...</p>
@@ -58,6 +61,16 @@
                 <div id = "hwindow" class = "window unshown">happ</div>
                 <div id = "cwindow" class = "window unshown">coll</div>
             </div>
+            <div id = "soldiers" class = "select">
+
+            </div>
+            <div id = "buildings" class = "select">
+
+            </div>
+            <div id = "console" class = "console">
+
+            </div>
         </main>
+        <!------------------------------------->
     </body>
-</html>
+    </html>

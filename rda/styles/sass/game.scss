@@ -7,7 +7,6 @@ body {
     padding: 0; margin: 0; overflow: hidden;
     background-color: whitesmoke;
     header {
-        height: 15vh;
         overflow: hidden;
         user-select: none;
         #civ {
@@ -22,15 +21,15 @@ body {
         }
         #links {
             position: absolute; top: 1vw; left: 38.5vw;
-            background-color: white; opacity: 0.7; overflow: hidden;
+            background-color: white; opacity: 0.7; overflow: hidden; white-space: nowrap;
             padding: 7px 10px 7px 10px;
             border-radius: 5px; box-shadow: 3px 3px 2px darkgrey;
             span::after { content: ' • '; }
             a { color: black; font-family: $fmain; font-size: 15px; text-decoration: none; &:hover { text-decoration: underline; } }
         }
         #source {
-            position: absolute; top: 7vh; left: 38.5vw;
-            background-color: white; opacity: 0.7; overflow: hidden;
+            position: absolute; top: 9vh; left: 38.5vw;
+            background-color: white; opacity: 0.7; overflow: hidden; white-space: nowrap;
             padding: 7px 10px 7px 10px;
             border-radius: 5px; box-shadow: 3px 3px 2px darkgrey;
             color: black; font-family: $fmain; font-size: 15px; text-decoration: none; 
@@ -39,7 +38,7 @@ body {
     }
     main {
         width: 98vw; height: 83vh;
-        position: absolute; top: 15vh; left: 1vw; overflow: hidden;
+        position: relative; left: 1vw; overflow: hidden;
         .select {
             overflow: hidden; user-select: none;
             opacity: 0.7;
@@ -55,7 +54,7 @@ body {
             .window {
                 background-color: white; box-shadow: 3px 3px 2px darkgrey;
                 border-left: 1px solid darkgrey; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px;
-                padding: 10px;
+                padding: 10px; overflow-x: hidden; overflow-y: scroll;
                 &.unshown { display: none; }
             }
         }

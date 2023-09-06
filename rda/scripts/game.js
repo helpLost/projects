@@ -17,10 +17,13 @@ let data = {
         king: "",
         kingdom: "",
         cities: { capital: "" },
-        culture: { new: "", name: "", tenet: ""},
-        religion: { new: "", name: "", tenet: "", value: ""},
+        culture: { new: "", name: "", tenet: "" },
+        religion: { new: "", name: "", tenet: "", value: "" },
         region: { continent: "", subcontinent: "" },
-        civ: { prestige: "Mighty", king: "Chieftain", kingdom: "Tribal Village", type: "Tribe", stats: {}}
+        civ: { prestige: "Mighty", king: "Chieftain", kingdom: "Tribal Village", type: "Tribe", stats: {} },
+        resources: { food: 0, wood: 0, stone: 0, herbs: 0, roots: 0, ore: 0, hide: 0 },
+        workers: { unemployed: 5, food: 0, wood: 0, stone: 0, guard: 0 },
+        soldiers: {} //- save for later implementation
     }
 };
 
@@ -53,9 +56,7 @@ function grabParams() {
 //--- Clock Functions --//
 let months = {"January": 31, "Febuary": [28, 29], "March": 31, "April": 30, "May": 31, "June": 30, "July": 31, "August": 31, "September": 30, "October": 31, "November": 30, "December": 31};
 
-//-- The clock display function. --//
 function cdisplay() { document.getElementById("date").innerText = Object.entries(months)[data.game.date.month][0] + " " + utils.list(data.game.date.day) + ", " + (data.game.date.appellation != "AD" ? utils.comma(data.game.date.year) : data.game.date.year) + " " + data.game.date.appellation; }
-//-- The function run every tick to do clock calculations. --//
 function clock() {
     if (data.game.date.hour < 24) { data.game.date.hour++; return; } else { data.game.date.hour = 1; data.game.date.day++; }
     if (data.game.date.day > (!data.game.date.leap && data.game.date.month != 1 ? Object.entries(months)[data.game.date.month][1] : (!data.game.date.leap && data.game.date.month == 1 ? Object.entries(months)[data.game.date.month][1][0] : (data.game.date.leap && data.game.date.month == 1 ? Object.entries(months)[data.game.date.month][1][1] : Object.entries(months)[data.game.date.month][1])))) { data.game.date.day = 1; data.game.date.month++; }
@@ -70,24 +71,26 @@ function clock() {
 function kidisplay() { document.getElementById("name").innerText = "The " + data.player.civ.kingdom + " of " + data.player.kingdom; }
 function kdisplay() { document.getElementById("ruler").innerText = "Ruled by the " + data.player.civ.prestige + " " + data.player.civ.king + " " + data.player.king; }
 
+function rdisplay() { document.getElementById("flabel").innerText = "Food: " + data.player.resources.food; document.getElementById("wlabel").innerText = "Wood: " + data.player.resources.wood; document.getElementById("slabel").innerText = "Stone: " + data.player.resources.stone; document.getElementById("herbs").innerText = "Herbs: " + data.player.resources.herbs; document.getElementById("roots").innerText = "Roots: " + data.player.resources.roots; document.getElementById("ore").innerText = "Ore: " + data.player.resources.ore; document.getElementById("hide").innerText = "Hide: " + data.player.resources.hide; }
+
 function rset(regions) { data.game.regions = regions; prset(); }
-function rdisplay() { document.getElementById("region").innerText = data.player.region.subcontinent + " " + data.player.region.continent + " " + data.player.civ.type}
+function redisplay() { document.getElementById("region").innerText = data.player.region.subcontinent + " " + data.player.region.continent + " " + data.player.civ.type}
 function prset() { 
     let random = Math.floor(Math.random() * 6); 
     data.player.region.continent = Object.entries(data.game.regions.continents)[random][1].ethnicity;
     data.player.region.subcontinent = Object.entries(data.game.regions.continents)[random][1].subs[Math.floor(Math.random() * Object.entries(data.game.regions.continents)[random][1].subs.length)];
-    rdisplay();
+    redisplay();
 }
 //-- Append all the text to where it's needed and start any beginning-of-game functions. --//
 function setup() {
-    kidisplay();
-    kdisplay();
+    kidisplay(); kdisplay();
 
-    document.getElementById("date").innerText = "Beginning clock...";
-    cdisplay();
-    utils.set(data.game.tick, clock);
+    document.getElementById("date").innerText = "Beginning clock..."; 
+    cdisplay(); utils.set(data.game.tick, clock);
 
     utils.port("regions").then(res => rset(res));
+
+    rdisplay();
 
     document.getElementById("resources").addEventListener('click', function() { utils.toggle("subjects", 0); });
     document.getElementById("workers").addEventListener('click', function() { utils.toggle("subjects", 1); });
