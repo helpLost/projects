@@ -1,3 +1,11 @@
+/*
+    All the styles for the RDA game are stored here.
+    Copyright (C) 2023 helpLost
+    Full file copyright notice is in the "NOTICE.md" file.
+
+    For any buisness or program-related inquiries email me at helplost30@gmail.com.
+*/
+
 $fmain: 'Lucida Sans', 'Lucida Grande';
 $fsecondary: Georgia, serif;
 $ftertiary: Times, 'Times New Roman';
@@ -59,8 +67,16 @@ body {
             }
         }
         #subjects {
-            position: absolute;
             .window { width: 35vw; height: 40vh; }
+            .resource { position: relative; margin-top: 2vh; margin-bottom: 4vh; margin-left: 1vw; display: flex; align-items: center;}
+            .resourceLabel { font-family: $fsecondary; font-size: 17px; }
+            .resourceGather { 
+                font-family: $ftertiary; font-size: 16px; 
+                position: absolute; left: 12vw;
+                background-color: whitesmoke; border: 1px solid lightgrey; border-radius: 5px;
+                box-shadow: 2px 2px 1px darkgrey; padding: 7px 10px 7px 10px;
+                &:hover { background-color: white; }
+            }
         }
     }
 }

@@ -1,6 +1,14 @@
 //-----------------------------------------//
 //--- RDA Utility Scripts | Adrian Lost ---//
 //-----------------------------------------//
+/*
+    All the utility functions needed for RDA to run properly.
+    Copyright (C) 2023 helpLost
+    Full file copyright notice is in the "NOTICE.md" file.
+
+    For any buisness or program-related inquiries email me at helplost30@gmail.com.
+*/
+
 export function elog(message) { console.error(message); }
 export function dlog(message) { console.info(message); }
 export function log(message) { console.log(message); }

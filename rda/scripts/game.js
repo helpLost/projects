@@ -1,6 +1,13 @@
 //--------------------------------------//
 //--- RDA Game Scripts | Adrian Lost ---//
 //--------------------------------------//
+/*
+    All the scripts for the RDA game file. Almost every game function is stored in this file.
+    Copyright (C) 2023 helpLost
+    Full file copyright notice is in the "NOTICE.md" file.
+
+    For any buisness or program-related inquiries email me at helplost30@gmail.com.
+*/
 import * as utils from "./utilities.js"
 let data = {
     game: {
@@ -21,11 +28,18 @@ let data = {
         religion: { new: "", name: "", tenet: "", value: "" },
         region: { continent: "", subcontinent: "" },
         civ: { prestige: "Mighty", king: "Chieftain", kingdom: "Tribal Village", type: "Tribe", stats: {} },
-        resources: { food: 0, wood: 0, stone: 0, herbs: 0, roots: 0, ore: 0, hide: 0 },
+        resources: { click: 1, food: [0, 10, "hide"], wood: [0, 25, "roots"], stone: [0, 45, "ore"], hide: 0, herbs: 0, roots: 0, ore: 0 },
+        caps: { food: 100, wood: 200, stone: 25, herbs: 50, roots: 75, ore: 20, hide: 50 },
         workers: { unemployed: 5, food: 0, wood: 0, stone: 0, guard: 0 },
         soldiers: {} //- save for later implementation
     }
 };
+
+//#region RESOURCES
+function rspc(chnc, resource) { let random = Math.floor(Math.random() * chnc); if (random == 0) { data.player.resources[`${resource}`] += 1; } }
+function radd(type, resource) { data.player.resources[`${resource}`][0] += data.player.resources[`${type}`]; if (data.player.resources[`${resource}`][0] >= data.player.caps[`${resource}`]) { data.player.resources[`${resource}`][0] = data.player.caps[`${resource}`]; } rspc(data.player.resources[`${resource}`][1], data.player.resources[`${resource}`][2]); rdisplay(); }
+function rsub(amnt, resource) { data.player.resources[`${resource}`][0] -= amnt; if (data.player.resources[`${resource}`][0] <= 0) { data.player.resources[`${resource}`] = 0; } }
+//#endregion
 
 //-- A function to grab the game data from the url. --//
 function grabParams() {
@@ -71,12 +85,12 @@ function clock() {
 function kidisplay() { document.getElementById("name").innerText = "The " + data.player.civ.kingdom + " of " + data.player.kingdom; }
 function kdisplay() { document.getElementById("ruler").innerText = "Ruled by the " + data.player.civ.prestige + " " + data.player.civ.king + " " + data.player.king; }
 
-function rdisplay() { document.getElementById("flabel").innerText = "Food: " + data.player.resources.food; document.getElementById("wlabel").innerText = "Wood: " + data.player.resources.wood; document.getElementById("slabel").innerText = "Stone: " + data.player.resources.stone; document.getElementById("herbs").innerText = "Herbs: " + data.player.resources.herbs; document.getElementById("roots").innerText = "Roots: " + data.player.resources.roots; document.getElementById("ore").innerText = "Ore: " + data.player.resources.ore; document.getElementById("hide").innerText = "Hide: " + data.player.resources.hide; }
+function rdisplay() { document.getElementById("flabel").innerText = "Food: " + data.player.resources.food[0]; document.getElementById("wlabel").innerText = "Wood: " + data.player.resources.wood[0]; document.getElementById("slabel").innerText = "Stone: " + data.player.resources.stone[0]; document.getElementById("hlabel").innerText = "Herbs: " + data.player.resources.herbs; document.getElementById("rlabel").innerText = "Roots: " + data.player.resources.roots; document.getElementById("olabel").innerText = "Ore: " + data.player.resources.ore; document.getElementById("ilabel").innerText = "Hide: " + data.player.resources.hide; }
 
 function rset(regions) { data.game.regions = regions; prset(); }
 function redisplay() { document.getElementById("region").innerText = data.player.region.subcontinent + " " + data.player.region.continent + " " + data.player.civ.type}
 function prset() { 
-    let random = Math.floor(Math.random() * 6); 
+    let random = Math.floor(Math.random() * 3); 
     data.player.region.continent = Object.entries(data.game.regions.continents)[random][1].ethnicity;
     data.player.region.subcontinent = Object.entries(data.game.regions.continents)[random][1].subs[Math.floor(Math.random() * Object.entries(data.game.regions.continents)[random][1].subs.length)];
     redisplay();
@@ -96,6 +110,10 @@ function setup() {
     document.getElementById("workers").addEventListener('click', function() { utils.toggle("subjects", 1); });
     document.getElementById("happiness").addEventListener('click', function() { utils.toggle("subjects", 2); });
     document.getElementById("collection").addEventListener('click', function() { utils.toggle("subjects", 3); });
+
+    document.getElementById("fharvest").addEventListener('click', function() { radd("click", "food"); });
+    document.getElementById("wharvest").addEventListener('click', function() { radd("click", "wood"); });
+    document.getElementById("sharvest").addEventListener('click', function() { radd("click", "stone"); });
 }
 
 window.onload = () => {

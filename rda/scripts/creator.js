@@ -1,6 +1,14 @@
 //----------------------------------------------//
 //--- RDA Save Creator Scripts | Adrian Lost ---//
 //----------------------------------------------//
+/*
+    All the scripts for the RDA save creator.
+    Copyright (C) 2023 helpLost
+    Full file copyright notice is in the "NOTICE.md" file.
+
+    For any buisness or program-related inquiries email me at helplost30@gmail.com.
+*/
+
 import * as utils from "./utilities.js"
 
 function form() {
