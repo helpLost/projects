@@ -1,7 +1,13 @@
 /*
     All the styles for the RDA game are stored here.
     Copyright (C) 2023 helpLost
-    Full file copyright notice is in the "NOTICE.md" file.
+    
+    This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public 
+    License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any 
+    later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
+    even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public 
+    License for more details. You should have received a copy of the GNU General Public License along 
+    with this program.  If not, see <https://www.gnu.org/licenses/>. For the full license file, see <LICENSE.md>.
 
     For any buisness or program-related inquiries email me at helplost30@gmail.com.
 */
@@ -48,8 +54,9 @@ body {
         width: 98vw; height: 83vh;
         position: relative; left: 1vw; overflow: hidden;
         .select {
-            overflow: hidden; user-select: none;
+            user-select: none;
             opacity: 0.7;
+            margin-bottom: 1vh;
             .tab {
                 background-color: white;
                 padding: 5px;
@@ -62,12 +69,12 @@ body {
             .window {
                 background-color: white; box-shadow: 3px 3px 2px darkgrey;
                 border-left: 1px solid darkgrey; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-top-right-radius: 5px;
-                padding: 10px; overflow-x: hidden; overflow-y: scroll;
+                padding: 10px; overflow-x: hidden; overflow-y: scroll; margin: 0;
                 &.unshown { display: none; }
             }
         }
         #subjects {
-            .window { width: 35vw; height: 40vh; }
+            .window { width: 35vw; height: 30vh; }
             .resource { position: relative; margin-top: 2vh; margin-bottom: 4vh; margin-left: 1vw; display: flex; align-items: center;}
             .resourceLabel { font-family: $fsecondary; font-size: 17px; }
             .resourceGather { 
@@ -78,5 +85,27 @@ body {
                 &:hover { background-color: white; }
             }
         }
+        #soldiers {
+            position: relative; top: 2vh;
+            .window { width: 35vw; height: 37vh; }
+        }
+        #buildings {
+            position: absolute; top: 0; left: 39vw;
+            .window { width: 30vw; height: 76vh; }
+        }
+        #research {
+            position: absolute; top: 41vh; left: 73vw;
+            .window { width: 23vw; height: 35vh; }
+        }
+    }
+    #events {
+        position: absolute; top: 1vw; left: 74vw;
+        user-select: none;
+        opacity: 0.7;
+        margin-bottom: 1vh;
+        background-color: white; box-shadow: 3px 3px 2px darkgrey; border-radius: 5px;
+        padding: 10px; overflow-x: hidden; overflow-y: scroll; margin: 0;
+        width: 23vw; height: 45vh;
+        .entry { margin-bottom: 2.5vh; p { margin-left: 5px; margin-right: 5px; padding: 0; width: fit-content; height: fit-content; display: inline; } }
     }
 }

@@ -5,7 +5,13 @@
         <!--
             The main game file for the RDA browser game. The entirety of the experience save for save creation happens here.
             Copyright (C) 2023 helpLost
-            Full file copyright notice is in the "NOTICE.md" file.
+            
+            This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public 
+            License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any 
+            later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
+            even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public 
+            License for more details. You should have received a copy of the GNU General Public License along 
+            with this program.  If not, see <https://www.gnu.org/licenses/>. For the full license file, see <LICENSE.md>.
 
             For any buisness or program-related inquiries email me at helplost30@gmail.com.
         -->
@@ -54,10 +60,10 @@
                     <div id = "wood" class = "resource"><label id = "wlabel" for = "wharvest" class = "resourceLabel">Wood: Retrieving...</label><button id = "wharvest" class = "resourceGather">Gather</button></div>
                     <div id = "stone" class = "resource"><label id = "slabel" for = "sharvest" class = "resourceLabel">Stone: Retrieving...</label><button id = "sharvest" class = "resourceGather">Gather</button></div>
                     
+                    <div id = "hide" class = "resource" style = "margin-bottom: 0; margin-top: 0;"><p id = "ilabel" class = "resourceLabel">Hide: Retrieving...</p></div>
                     <div id = "herbs" class = "resource" style = "margin-bottom: 0; margin-top: 0;"><p id = "hlabel" class = "resourceLabel">Herbs: Retrieving...</p></div>
                     <div id = "roots" class = "resource" style = "margin-bottom: 0; margin-top: 0;"><p id = "rlabel" class = "resourceLabel">Roots: Retrieving...</p></div>
                     <div id = "ore" class = "resource" style = "margin-bottom: 0; margin-top: 0;"><p id = "olabel" class = "resourceLabel">Ore: Retrieving...</p></div>
-                    <div id = "hide" class = "resource" style = "margin-bottom: 0; margin-top: 0;"><p id = "ilabel" class = "resourceLabel">Hide: Retrieving...</p></div>
                 </div>
                 <div id = "wwindow" class = "window unshown">
                     <div id = "hunters">hunters</div>
@@ -69,15 +75,39 @@
                 <div id = "cwindow" class = "window unshown">coll</div>
             </div>
             <div id = "soldiers" class = "select">
-
+                <button id = "garrison" class = "tab selected">Garrison</button><button id = "conquest" class = "tab unselected">Conquest</button><button id = "fortification" class = "tab unselected">Fortification</button>
+                <div id = "gwindow" class = "window shown">
+                    <p>garrison</p>
+                </div>
+                <div id = "owindow" class = "window unshown">conquest</div>
+                <div id = "fwindow" class = "window unshown">quick fortification</div>
             </div>
             <div id = "buildings" class = "select">
-
+                <button id = "central" class = "tab selected">Castle</button><button id = "city" class = "tab unselected">City</button><button id = "services" class = "tab unselected">Services</button><button id = "military" class = "tab unselected">Military</button>
+                <div id = "awindow" class = "window shown">central</div>
+                <div id = "twindow" class = "window unshown">city</div>
+                <div id = "swindow" class = "window unshown">services</div>
+                <div id = "mwindow" class = "window unshown">military</div>
             </div>
-            <div id = "console" class = "console">
-
+            <div id = "research" class = "select">
+                <button id = "resource" class = "tab selected">Resource</button><button id = "building" class = "tab unselected">Buildings</button><button id = "diplomacy" class = "tab unselected">Diplomacy</button>
+                <div id = "swindow" class = "window shown">resource</div>
+                <div id = "uwindow" class = "window unshown">building</div>
+                <div id = "pwindow" class = "window unshown">diplomacy</div>
             </div>
         </main>
+        <div id = "events" class = "console">
+            <div id = "0" class = "entry"><p class = "time"></p><p class = "message"></p><p class = "repeat"></p></div>
+            <div id = "1" class = "entry"><p class = "time"></p><p class = "message"></p><p class = "repeat"></p></div>
+            <div id = "2" class = "entry"><p class = "time"></p><p class = "message"></p><p class = "repeat"></p></div>
+            <div id = "3" class = "entry"><p class = "time"></p><p class = "message"></p><p class = "repeat"></p></div>
+            <div id = "4" class = "entry"><p class = "time"></p><p class = "message"></p><p class = "repeat"></p></div>
+            <div id = "5" class = "entry"><p class = "time"></p><p class = "message"></p><p class = "repeat"></p></div>
+            <div id = "6" class = "entry"><p class = "time"></p><p class = "message"></p><p class = "repeat"></p></div>
+            <div id = "7" class = "entry"><p class = "time"></p><p class = "message"></p><p class = "repeat"></p></div>
+            <div id = "8" class = "entry"><p class = "time"></p><p class = "message"></p><p class = "repeat"></p></div>
+            <div id = "9" class = "entry"><p class = "time"></p><p class = "message"></p><p class = "repeat"></p></div>
+        </div>
         <!------------------------------------->
     </body>
     </html>

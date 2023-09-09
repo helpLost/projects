@@ -4,16 +4,24 @@
 /*
     All the utility functions needed for RDA to run properly.
     Copyright (C) 2023 helpLost
-    Full file copyright notice is in the "NOTICE.md" file.
+    
+    This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public 
+    License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any 
+    later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
+    even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public 
+    License for more details. You should have received a copy of the GNU General Public License along 
+    with this program.  If not, see <https://www.gnu.org/licenses/>. For the full license file, see <LICENSE.md>.
 
     For any buisness or program-related inquiries email me at helplost30@gmail.com.
 */
 
 export function elog(message) { console.error(message); }
 export function dlog(message) { console.info(message); }
-export function log(message) { console.log(message); }
+export function clog(message) { console.log(message); }
 
 export function set(time, func) { let interval = self.setInterval(func, time); }
+export function time(divider, noon) { let date = new Date; if (noon == false) { return date.getHours() + divider + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()); } return (date.getHours() <= 12 ? date.getHours() + divider + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) : date.getHours() - 12 + divider + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()))}
+
 export async function port(file) { const response = await fetch("../../scripts/json/" + file + ".json"); return await response.json(); }
 
 //-- A function that will switch through the tabs of a select window on click. --//
