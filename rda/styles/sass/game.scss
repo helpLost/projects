@@ -104,7 +104,7 @@ body {
         opacity: 0.7;
         margin-bottom: 1vh;
         background-color: white; box-shadow: 3px 3px 2px darkgrey; border-radius: 5px;
-        padding: 10px; overflow-x: hidden; overflow-y: scroll; margin: 0;
+        padding: 10px; overflow: scroll; margin: 0;
         width: 23vw; height: 45vh;
         .entry { margin-bottom: 2.5vh; p { margin-left: 5px; margin-right: 5px; padding: 0; width: fit-content; height: fit-content; display: inline; } }
     }

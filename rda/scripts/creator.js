@@ -14,7 +14,7 @@
 
     For any buisness or program-related inquiries email me at helplost30@gmail.com.
 */
-
+"use strict";
 import * as utils from "./utilities.js"
 
 function form() {

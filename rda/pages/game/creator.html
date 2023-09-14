@@ -36,15 +36,15 @@
         <form id = "data" action = "game.html" method = "get">
             <div id = "sidebar">
                 <div id = "realm">
-                    <div><label for = "king">Character Name: </label><input name = "k" id = "king" id = "king" type = "text" placeholder="Lillian Lost" required autocapitalize="false" autocomplete="off" title = "This will be displayed whenever you are referenced."></div>
-                    <div><label for = "kingdom">Realm Title: </label><input name = "ki" id = "kingdom" id = "kingdom" type = "text" placeholder="Lenthael" required autocapitalize="false" autocomplete="off" title = "This will be displayed whenever your realm is referenced."></div>
-                    <div><label for = "city">Capital City Name: </label><input name = "c" id = "city" id = "city" type = "text" placeholder="Lenth" required autocapitalize="false" autocomplete="off" title = "This will be displayed whenever your capital city is referenced."></div>
+                    <div><label for = "k">Character Name: </label><input name = "player.king" id = "k" type = "text" placeholder="Lillian Lost" required autocapitalize="false" autocomplete="off" title = "This will be displayed whenever you are referenced."></div>
+                    <div><label for = "ki">Realm Title: </label><input name = "player.kingdom" id = "ki" type = "text" placeholder="Lenthael" required autocapitalize="false" autocomplete="off" title = "This will be displayed whenever your realm is referenced."></div>
+                    <div><label for = "c">Capital City Name: </label><input name = "player.city" id = "c" type = "text" placeholder="Lenth" required autocapitalize="false" autocomplete="off" title = "This will be displayed whenever your capital city is referenced."></div>
                 </div>
                 <div id = "ethnicity">
-                    <div><label for = "culture">Found a New Culture: </label><input name = "cu" id = "culture" type = "checkbox" title = "If this isn't checked you'll be assigned the ethnicity of where you spawn."></div>
-                    <div class = "caffect"><label for = "cname">Name Your Culture: </label><input name = "cn" id = "cname" type = "text" placeholder="Lenthaelic" autocapitalize="false" autocomplete="off" title = "This will be displayed when referencing something having to do with your people."></div>
+                    <div><label for = "culture">Found a New Culture: </label><input name = "player.culture.new" id = "culture" type = "checkbox" title = "If this isn't checked you'll be assigned the ethnicity of where you spawn."></div>
+                    <div class = "caffect"><label for = "cname">Name Your Culture: </label><input name = "player.culture.name" id = "cname" type = "text" placeholder="Lenthaelic" autocapitalize="false" autocomplete="off" title = "This will be displayed when referencing something having to do with your people."></div>
                     <div class = "caffect"><label for = "ctenet">Select a Main Tenet: </label>
-                    <select name = "ct" id = "ctenet">
+                    <select name = "player.culture.tenet" id = "ctenet">
                         <option value = "isolationism" title = "Members of your culture will only want to interact with others of their culture.">Isolationism</option>
                         <option value = "accepticism" title = "Members of your culture will eagerly accept foreign peoples and ideals in an effort to improve themselves.">Accepticism</option>
                         <option value = "pilgrimism" title = "Members of your culture will frequently go for long journeys for a variety of reasons.">Pilgrimism</option>
@@ -55,17 +55,16 @@
                     </select></div>
                 </div>
                 <div id = "church">
-                    <div><label for = "religion">Found a New Religion: </label><input name = "r" id = "religion" type = "checkbox" title = "If this is left unchecked, you'll be assigned the dominant religion in the area you spawn in."></div>
-                    <div class = "raffect"><label for = "rname">Name Your Religion: </label><input name = "rn" id = "rname" type = "text" placeholder="Deleism" autocapitalize="false" autocomplete="off" title = "This will be displayed whenever your religion is referenced."></div>
-                    <div class = "raffect"><label for = "radjective">Name Your Followers: </label><input name = "ra" id = "radjective" type = "text" placeholder="Deles" autocapitalize="false" autocomplete="off" title = "This will be displayed when followers of your religion are mentioned."></div>
+                    <div><label for = "religion">Found a New Religion: </label><input name = "player.religion.new" id = "religion" type = "checkbox" title = "If this is left unchecked, you'll be assigned the dominant religion in the area you spawn in."></div>
+                    <div class = "raffect"><label for = "rname">Name Your Religion: </label><input name = "player.religion.name" id = "rname" type = "text" placeholder="Deleism" autocapitalize="false" autocomplete="off" title = "This will be displayed whenever your religion is referenced."></div>
                     <div class = "raffect"><label for = "rtenet">Select a Clergy Type: </label>
-                    <select name = "rt" id = "rtenet">
+                    <select name = "player.religion.tenet" id = "rtenet">
                         <option value = "spiritual" title = "The head of faith is designated by religious election.">Spiritual</option>
                         <option value = "lay" title = "The head of faith is the follower with the highest amount of land.">Lay</option>
                         <option value = "warrior" title = "The head of faith is decided by combat.">Warrior</option>
                     </select></div>
                     <div class = "raffect"><label for = "rvalue">Select a Main Value: </label>
-                    <select name = "rv" id = "rvalue">
+                    <select name = "player.religion.value" id = "rvalue">
                         <option value = "equality" title = "Your faith values equality over many other ideals, seeking to level the playing field in all situations.">Equality</option>
                         <option value = "compassion" title = "Your faith considers lack of empathy to be a sin and members will attempt to actively help anyone who comes to them with a problem.">Compassion</option>
                         <option value = "levity" title = "Members of your faith consider levity and humor to be virtues, taking pride in their optimism.">Levity</option>
@@ -76,11 +75,11 @@
                     </select></div>
                 </div>
                 <div id = "game">
-                    <div><label for = "achievements">Achievements: </label><input name = "a" id = "achievements" type = "checkbox" title = "Enable/disable achievements." checked></div>
-                    <div><label for = "cheats">Cheats: </label><input name = "ch" id = "cheats" type = "checkbox" title = "Enable/disable cheats."></div>
-                    <div><label for = "name">Name Your Save: </label><input name = "s" id = "name" type = "text" placeholder = "big_world5101" autocapitalize="false" autocomplete="off" title = "This will be displayed when needed."></div>
-                    <div><label for = "difficulty">Difficulty: </label>
-                    <select name = "d" id = "difficulty">
+                    <div><label for = "a">Achievements: </label><input name = "game.achievements" id = "a" type = "checkbox" title = "Enable/disable achievements." checked></div>
+                    <div><label for = "ch">Cheats: </label><input name = "game.cheats" id = "ch" type = "checkbox" title = "Enable/disable cheats."></div>
+                    <div><label for = "name">Name Your Save: </label><input name = "game.save" id = "name" type = "text" placeholder = "big_world5101" autocapitalize="false" autocomplete="off" title = "This will be displayed when needed."></div>
+                    <div><label for = "d">Difficulty: </label>
+                    <select name = "game.difficulty" id = "d">
                         <option value = "alone" title = "There will be no enemies or rival civilizations.">Alone</option>
                         <option value = "veasy" title = "Rivals will be pushovers and storms will be mild.">Very Easy</option>
                         <option value = "easy" title = "Rivals will be strategically incompetent and storms will be rare.">Easy</option>

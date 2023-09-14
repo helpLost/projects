@@ -1,0 +1,10 @@
+{
+    "workers": {
+        "unemployed": {"food": 5, "wood": 3, "stone": 0, "hide": 0, "ore": 0},
+        "foodgatherers": {"food": 10, "wood": 5, "stone": 1, "hide": 1, "ore": 0},
+        "woodgatherers": {"food": 15, "wood": 10, "stone": 2, "hide": 2, "ore": 0},
+        "stonegatherers": {"food": 10, "wood": 10, "stone": 4, "hide": 0, "ore": 1},
+        "protectors": {"food": 20, "wood": 15, "stone": 5, "hide": 3, "ore": 2}
+    },
+    "soldiers": {}
+}

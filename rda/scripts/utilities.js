@@ -14,22 +14,41 @@
 
     For any buisness or program-related inquiries email me at helplost30@gmail.com.
 */
+"use strict";
 
+// Console Logging
 export function elog(message) { console.error(message); }
-export function dlog(message) { console.info(message); }
-export function clog(message) { console.log(message); }
+export function dlog(message) { console.info(message);  }
+export function clog(message) { console.log(message);   }
 
+// Event Listeners
+export function eadd(element, callback, func) { typeof(element) != "string" ? element.addEventListener(callback, func) : document.getElementById(element).addEventListener(callback, func); }
+export function erem(element, callback, func) { element.removeEventListener(callback, func ); }
+export function eaddc(classname, callback, func) { let items = document.getElementsByClassName(classname); for (let i = 0; i < items.length; i++) { eadd(items.item(i), callback, func); } }
+
+// Appending / Styling
+export function display(element, html, text) { (html == false ? document.getElementById(element).innerText = text : document.getElementById(element).innerHTML = text) }
+export function recolor(element) { // TODO: finish
+    num = Number(document.getElementById(element).innerText);
+    if(num <= 0) {
+        e
+    }
+}
+
+// Dates / Intervals
 export function set(time, func) { let interval = self.setInterval(func, time); }
 export function time(divider, noon) { let date = new Date; if (noon == false) { return date.getHours() + divider + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()); } return (date.getHours() <= 12 ? date.getHours() + divider + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) : date.getHours() - 12 + divider + (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()))}
 
+// File Loading
 export async function port(file) { const response = await fetch("../../scripts/json/" + file + ".json"); return await response.json(); }
 
-//-- A function that will switch through the tabs of a select window on click. --//
+// Tab Elements
 export function toggle(id, index) {
     let tabs = document.getElementById(id).getElementsByClassName("tab"), windows = document.getElementById(id).getElementsByClassName("window");
     for (let item of Object.keys(tabs)) { if (item != index) { tabs.item(item).classList = "tab unselected"; } else { tabs.item(item).classList = "tab selected"; } }
     for (let item of Object.keys(windows)) { if (item != index) { windows.item(item).classList = "window unshown"; } else { windows.item(item).classList = "window shown"; } }
 }
+export function ssetup(id) { let children = document.getElementById(id).getElementsByClassName("tab"); for(let i = 0; i < children.length; i++) { eadd(children.item(i), 'click', function() { toggle(id, i); }); } }
 
 //-- A function that will append a bit onto the end of a list number to make it look better, IE "1st", "2nd". --//
 export function list(number) { 
