@@ -18,7 +18,7 @@ Rising Dawns: Adventure is developed by one guy in his free time, so if I don't 
 ---
 
 ### Installation
-If you want to use the RDA source code, it is totally okay and completely legal, except for the exceptions specified in the [LICENSE](LICENSE.md) file. To download the source code, either download a zip file of the Github repo directly (be warned that the current repository code may not be working!) or one of the editions from the 'releases' section.
+If you want to use the RDA source code--for any purpose--it is totally okay and completely legal, except for any exceptions specified in the [LICENSE](LICENSE.md) file. To download the source code, either download a zip file of the Github repo directly (be warned that the current repository code may not be working!) or one of the editions from the 'releases' section.
 >
 Once installed, the RDA source files are only usable if you have a home server. I suggest that if you don't have a physical server, use the [Live Preview Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.live-server) or the [Live Server Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer). They're easy to use and launch directly from VSCode with no setup involved past extension installation.
 >
