@@ -75,7 +75,7 @@ body {
         }
         #subjects {
             .window { width: 35vw; height: 30vh; }
-            .resource { position: relative; margin-top: 2vh; margin-bottom: 4vh; margin-left: 1vw; display: flex; align-items: center;}
+            .resource { position: relative; margin-top: 2vh; margin-bottom: 4vh; margin-left: 1vw; display: flex; align-items: center; img { margin-right: 10px; } }
             .resourceLabel { font-family: $fsecondary; font-size: 17px; }
             .resourceGather { 
                 font-family: $ftertiary; font-size: 16px; 
@@ -83,6 +83,29 @@ body {
                 background-color: whitesmoke; border: 1px solid lightgrey; border-radius: 5px;
                 box-shadow: 2px 2px 1px darkgrey; padding: 7px 10px 7px 10px;
                 &:hover { background-color: white; }
+            }
+            .resourceButtonL { position: absolute; left: 13vw; } .resourceButtonA { position: absolute; left: 17vw; }
+            .resourceButtonL, .resourceButtonA {
+                font-family: $ftertiary; font-size: 16px; 
+                background-color: whitesmoke; border: 1px solid lightgrey; border-radius: 5px;
+                box-shadow: 2px 2px 1px darkgrey; padding: 7px 10px 7px 10px;
+                &:hover { background-color: white; }
+            }
+            #estimated {
+                p.resourceLabel {
+                    display: block;
+                }
+                #lossContainer {
+                    position: absolute;
+                    top: 5.5vh;
+                    display: flex; align-items: center;
+                    div.resourceLabelMinor {
+                        font-size: 14px; font-family: $fmain;
+                        display: flex; justify-content: center; align-items: center;
+                        margin-right: 25px;
+                        img { margin-right: 5px; }
+                    }
+                }
             }
         }
         #soldiers {

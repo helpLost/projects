@@ -28,12 +28,8 @@ export function eaddc(classname, callback, func) { let items = document.getEleme
 
 // Appending / Styling
 export function display(element, html, text) { (html == false ? document.getElementById(element).innerText = text : document.getElementById(element).innerHTML = text) }
-export function recolor(element) { // TODO: finish
-    num = Number(document.getElementById(element).innerText);
-    if(num <= 0) {
-        e
-    }
-}
+export function insert(string, insert, index) { let str = String(string); return str.slice(0, index) + insert + str.slice(index); }
+export function shorten(number) { let num = comma(number, '.'); if (num.length >= 13) { return num.substring(0, num.length - 10) + 'B'; } else if (num.length >= 9) { return num.substring(0, num.length - 6) + 'M'; } else if (num.length >= 6) { return num.substring(0, num.length - 2) + 'K'; } else { return comma(number); } }
 
 // Dates / Intervals
 export function set(time, func) { let interval = self.setInterval(func, time); }
@@ -60,10 +56,10 @@ export function list(number) {
 }
 
 //-- A function to add commas to a big number. --//
-export function comma(number) {
+export function comma(number, splitter) {
     let string = number.toString().split(''), length = string.length;
-    for (let i = length; i > 0; i-=3) { if (string[i] != undefined) { string.splice(i, 0, ","); } }
-    return string.join("");
+    for (let i = length; i > 0; i-=3) { if (string[i] != undefined) { string.splice(i, 0, (splitter != undefined ? splitter : ',')); } }
+    return String(string.join(""));
 }
 
 //-- A message that will be applied onto every element of the specified type via the title attribute. --//

@@ -4,12 +4,12 @@
 /*
     All the scripts for the RDA game file. Almost every game function is stored in this file.
     Copyright (C) 2023 helpLost
-    
-    This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public 
-    License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any 
-    later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
-    even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public 
-    License for more details. You should have received a copy of the GNU General Public License along 
+
+    This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public
+    License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any
+    later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+    even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public
+    License for more details. You should have received a copy of the GNU General Public License along
     with this program.  If not, see <https://www.gnu.org/licenses/>. For the full license file, see <LICENSE.md>.
 
     For any buisness or program-related inquiries email me at helplost30@gmail.com.
@@ -28,9 +28,9 @@ import * as utils from "./utilities.js"
             (property == "" ? (data[storage][inner] = (value != "on" && value != "" ? value : value != "" ? true : false)) : (data[storage][inner][property] = (value != "on" && value != "" ? value : value != "" ? true : false)));
         }
         if (data.game.release) { window.history.replaceState({}, document.title, "/" + "game.html"); } else { utils.dlog(data); }
-        
+
         document.getElementById("date").innerText = "Beginning clock...";
-        utils.set(data.game.tick, clock); utils.set(data.game.tick, )
+        utils.set(data.game.tick, clock);
         cinit();
     }
     function dataset(value, inner) { (inner == undefined ? ( Object.assign(data, value), collect() ) : Object.assign(data[inner], value)); }
@@ -41,7 +41,7 @@ import * as utils from "./utilities.js"
 //#region STARTUP
     function setup() {
         utils.port("default").then(res => {
-            dataset(res); vcheck(); utils.port("citizens").then(res => { dataset(res, "game"); utils.port("regions").then(res => { dataset(res, "game"); prset(); top_update(); game_update(); }) }); 
+            dataset(res); vcheck(); utils.port("citizens").then(res => { dataset(res, "game"); utils.port("regions").then(res => { dataset(res, "game"); prset(); top_update(); game_update(); }) });
         });
 
         // TODO: shrink
@@ -51,13 +51,19 @@ import * as utils from "./utilities.js"
     }
     window.onload = () => {
         utils.createBackground(true, "1", 0.6);
-        window.addEventListener('resize', function() { utils.createBackground(false, "1", 0.6); }); 
+        window.addEventListener('resize', function() { utils.createBackground(false, "1", 0.6); });
         window.addEventListener('fullscreenchange', function() { utils.createBackground(false, "1", 0.6); })
 
         setup();
     }
 //#endregion
 //#region UMBRELLAS
+    function eaddi(id, callback) { // TODO: find a better place
+        let items = document.getElementById(id).getElementsByClassName("add");
+        for (let i = 0; i < items.length; i++) { 
+            utils.eadd(items.item(i), callback, function() { eval(items.item(i).getAttribute("func")); })
+        }
+    }
     function top_update() {
         utils.display("name",   false, "The " + data.player.civ.kingdom + " of " + data.player.kingdom);
         utils.display("ruler",  false, "Ruled by the " + data.player.civ.prestige + " " + data.player.civ.king + " " + data.player.king);
@@ -73,6 +79,9 @@ import * as utils from "./utilities.js"
         // Workers
         utils.display("unlabel", false, "Unemployed: " + data.player.workers.unemployed); utils.display("prlabel", false, data.player.civ.type + " Protectors: " + data.player.workers.protectors);
         utils.display("hulabel", false, "Hunters: " + data.player.workers.foodgatherers); utils.display("wolabel", false, "Wood Gatherers: " + data.player.workers.woodgatherers); utils.display("stlabel", false, "Stone Gatherers: " + data.player.workers.stonegatherers);
+
+        lres();
+        eaddi("wwindow", 'click');
     }
 //#endregion
 //#region RESOURCES
@@ -81,34 +90,56 @@ import * as utils from "./utilities.js"
     function rsub(amnt, resource) { (resource == "food" || resource == "wood" || resource == "stone" ? data.player.resources[resource][0] -= amnt : data.player.resources[resource] -= amnt); game_update(); }
 //#endregion
 //#region WORKERS
-    function wadd(amnt, worker) { 
-        data.player.workers[worker] += amnt; console.log(data.game.workers[worker].food);
+    function wadd(amnt, worker) {
+        data.player.workers[worker] += amnt;
         rsub(data.game.workers[worker].food, "food"); rsub(data.game.workers[worker].wood, "wood"); rsub(data.game.workers[worker].stone, "stone");
         rsub(data.game.workers[worker].hide, "hide"); rsub(data.game.workers[worker].ore, "ore");
+        game_update();
     }
-    function wres() { // FIXME: improve
+    function wres() { // FIXME: improve + add a centralized "loss" data structure
         let i = 0, food = 0, wood = 0, stone = 0, hide = 0, ore = 0;
         for (let item of Object.values(data.game.workers)) {
             let workernum = Object.values(data.player.workers)[i];
             food += item.food * workernum; wood += item.wood * workernum; stone += item.stone * workernum;
             hide += item.hide * workernum; ore += item.ore * workernum;
         i++; }
-        rsub(food, "food"); rsub(wood, "wood"); rsub(stone, "stone"); rsub(hide, "hide"); rsub(ore, "ore"); 
+        rsub(food, "food"); rsub(wood, "wood"); rsub(stone, "stone"); rsub(hide, "hide"); rsub(ore, "ore");
+    }
+    function lres() {
+        let elements = document.getElementById("lossContainer").getElementsByClassName("resourceLabelText");
+        let i = 0, food = 0, wood = 0, stone = 0, hide = 0, ore = 0;
+        for (let item of Object.values(data.game.workers)) {
+            let workernum = Object.values(data.player.workers)[i];
+            food += item.food * workernum; wood += item.wood * workernum; stone += item.stone * workernum;
+            hide += item.hide * workernum; ore += item.ore * workernum;
+        i++; }
+        elements.item(0).innerText = utils.shorten(food); elements.item(1).innerText = utils.shorten(wood); elements.item(2).innerText = utils.shorten(stone);
+        elements.item(3).innerText = utils.shorten(hide); elements.item(4).innerText = utils.shorten(ore);
     }
 //#endregion
 //#region CLOCK
     let months = {"January": 31, "Febuary": [28, 29], "March": 31, "April": 30, "May": 31, "June": 30, "July": 31, "August": 31, "September": 30, "October": 31, "November": 30, "December": 31};
     function clock() { // FIXME: improve
         if (data.game.date.hour < 24) { data.game.date.hour++; return; } else { data.game.date.hour = 1; data.game.date.day++; }
-        if (data.game.date.day > (!data.game.date.leap && data.game.date.month != 1 ? Object.entries(months)[data.game.date.month][1] : (!data.game.date.leap && data.game.date.month == 1 ? Object.entries(months)[data.game.date.month][1][0] : (data.game.date.leap && data.game.date.month == 1 ? Object.entries(months)[data.game.date.month][1][1] : Object.entries(months)[data.game.date.month][1])))) { data.game.date.day = 1; data.game.date.month++; }
+        if (data.game.date.day > (!data.game.date.leap && data.game.date.month != 1 ? Object.entries(months)[data.game.date.month][1] : (!data.game.date.leap && data.game.date.month == 1 ? Object.entries(months)[data.game.date.month][1][0] : (data.game.date.leap && data.game.date.month == 1 ? Object.entries(months)[data.game.date.month][1][1] : Object.entries(months)[data.game.date.month][1])))) { wres(); data.game.date.day = 1; data.game.date.month++; }
         if (data.game.date.month > 11) { data.game.date.month = 0; (data.game.date.appellation == "BC" ? data.game.date.year-- : data.game.date.year++); ((data.game.date.year / 4).toString().indexOf('.') > -1 ? data.game.date.leap = true : data.game.date.leap = false) }
         if (data.game.date.appellation == "BC" && data.game.date.year < 0) { data.game.date.appellation = "AD"; }
+        top_update();
     }
 //#endregion
 //#region CONSOLE
     let eventlog = document.getElementById("events").getElementsByClassName("entry"), eventRepeat = 1;
-    function cinit() { for(let i = 0; i < eventlog.length; i++) { eventlog.item(i).childNodes.item(0).innerText = "(" + utils.time(":", true) + ")"; eventlog.item(i).childNodes.item(1).innerText = "No events have yet occurred."; eventlog.item(i).childNodes.item(2).innerText = "(x" + eventRepeat + ")"; } }
-    function colog() { }
+    function cinit() { for(let i = 0; i < eventlog.length; i++) { colog("No events to note.", true); } }
+    function colog(message, individual) {
+        let date = utils.time(':', true);
+        if (eventlog.item(0).childNodes.item(1).innerText != message || individual) {
+            eventRepeat = 1; let keepLines = 10;
+            while (--keepLines > 1) { eventlog.item(keepLines).innerHTML = eventlog.item(keepLines-1).innerHTML; }
+
+            eventlog.item(1).innerHTML = eventlog.item(0).innerHTML;
+        } else { eventRepeat++ }
+        eventlog.item(0).innerHTML = "<p class = 'time'>(" + date + ")</p><p class = 'message'>" + message + "</p><p class = 'repeat'>(x" + eventRepeat + ")</p>";;
+    }
 //#endregion
 
 //--- Background Game Functions ---//
