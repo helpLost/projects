@@ -19,7 +19,21 @@ $ftertiary: Times, 'Times New Roman';
 body {
     width: 100vw; height: 100vh;
     padding: 0; margin: 0; overflow: hidden;
-    background-color: whitesmoke;
+    background-color: whitesmoke;   
+    #filecontainer {
+        width: 100vw; height: 100vh;
+        position: absolute; top: 0; left: 0; 
+        display: flex; justify-content: center; align-items: center; 
+        background-color: rgba(0,0,0,0.5);
+        #fileload {
+            background-color: white; 
+            border: 1px solid darkgrey; 
+            border-radius: 10px;
+            text-align: center;
+            input { display: none; }
+            p { font-family: $fmain; font-size: 16px; }
+        }
+    }
     header {
         overflow: hidden;
         user-select: none;
@@ -77,6 +91,7 @@ body {
             .window { width: 35vw; height: 30vh; }
             .resource { position: relative; margin-top: 2vh; margin-bottom: 4vh; margin-left: 1vw; display: flex; align-items: center; img { margin-right: 10px; } }
             .resourceLabel { font-family: $fsecondary; font-size: 17px; }
+            .resourceCapLabel { font-family: $ftertiary; font-size: 16px; font-style: italic; margin-left: 10vw; }
             .resourceGather { 
                 font-family: $ftertiary; font-size: 16px; 
                 position: absolute; left: 12vw;

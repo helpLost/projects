@@ -19,9 +19,9 @@
 - #### 0.0.0002 | First Words
     - Happiness Framework
     - Civilization Stats
-    - Save Creation + Loading System
     - Building Framework
 - #### 0.0.0001 | New Life
+    - Save Creation + Loading System
     - Game Console Logging
     - Technical Utilities
     - Calendar System (leap years included)

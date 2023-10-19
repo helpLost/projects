@@ -14,7 +14,6 @@
 
     For any buisness or program-related inquiries email me at helplost30@gmail.com.
 */
-"use strict";
 import * as utils from "./utilities.js"
 
 //#region DATA
@@ -37,6 +36,41 @@ import * as utils from "./utilities.js"
     function vcheck() { if (data.game.version[0] != version[0] || data.game.version[1] != version[1]) { utils.elog(
         "Your save version is out of date! (" + data.game.version[0] + "." + data.game.version[1] + " X " + version[0] + "." + version[1] + ") Errors might occur as you're playing. If you wish to play the version you created the save on, please download the files from the Github and host them locally."
     )}}
+
+    function savefile(only) {
+        if(!only) {
+            let file = new Blob([JSON.stringify(data)], {type: "application/json"});
+            if (window.navigator.msSaveOrOpenBlob) // IE10+
+                window.navigator.msSaveOrOpenBlob(file, data.game.save);
+            else { // All others
+                var a = document.createElement("a"); let url = URL.createObjectURL(file);
+                a.href = url; a.download = data.game.save + ".rising";
+                document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+            }
+        }
+        localStorage.setItem('risingdawns', JSON.stringify(data));
+    }
+    function loadfile(local) {
+        if (!local) {
+            let container = document.createElement("div"); container.id = "filecontainer";
+            container.innerHTML = "<dialog id = 'fileload' open><p>Load Save File</p><div id = 'file'><button id = 'fileselect' style = 'display: inline;'>Select File</button><p id = 'filename' style = 'display: inline; margin-left: 10px;'>None Selected <span id = 'filesize' style = 'display: inline; font-style: italic; font-family: Georgia;'>0 bytes</span></p></div><input id = 'filegive' type = 'file' style = 'padding: 5vh;' accept = '.json, .rising'></dialog>"
+            document.body.appendChild(container); utils.eadd("fileselect", 'click', (e) => {
+                document.getElementById("filegive").click();
+                e.preventDefault();
+            }); utils.eadd("filegive", 'change', function(e) { 
+                let file = document.getElementById("filegive").files[0], reader = new FileReader(); 
+                reader.onload = (e) => {
+                    data = JSON.parse(e.target.result);
+                    document.body.removeChild(document.getElementById("filecontainer"));
+                    top_update(); game_update(); vcheck();
+                };
+                reader.readAsText(file);
+            });
+        } else {
+            if (data != null) { data = JSON.parse(localStorage.getItem('risingdawns')); } else { utils.dlog("Local storage save not found."); colog("Save not found. Did you mean to load from a file?"); }
+        }
+    }
 //#endregion
 //#region STARTUP
     function setup() {
@@ -46,8 +80,13 @@ import * as utils from "./utilities.js"
 
         // TODO: shrink
         utils.ssetup("subjects"); utils.ssetup("soldiers"); utils.ssetup("buildings"); utils.ssetup("research");
-        utils.eadd("fharvest", 'click', function() { radd("click", "food");  }); utils.eadd("wharvest", 'click', function() { radd("click", "wood");  });
+        utils.eadd("fharvest", 'click', function() { radd("click", "food"); }); utils.eadd("wharvest", 'click', function() { radd("click", "wood");  });
         utils.eadd("sharvest", 'click', function() { radd("click", "stone"); });
+
+        function handlekeys(key) { if(key == 's') { savefile(); } else if (key == 'o') { loadfile(true); } else if (key == 'l') { loadfile(false); } }
+        utils.eadd(document, 'keydown', function(event) { handlekeys(event.key); });
+
+        utils.dlog("Running RDA Version " + version[0] + "." + version[1] + "a");
     }
     window.onload = () => {
         utils.createBackground(true, "1", 0.6);
