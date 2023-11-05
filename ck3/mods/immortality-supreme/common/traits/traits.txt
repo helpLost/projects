@@ -1,0 +1,140 @@
+## IMMORTAL EDUCATION TRAITS
+## ALCHEMIST, WARLOCK, GREAT ARCHITECT, HIGH THEOLOGAN, ETC
+
+## IMMORTAL EVENT TRAITS
+immortal = {
+    education = no
+    catergory = health
+    good = yes
+
+    health = 1000.0
+    fertility = -0.1
+    monthly_lifestyle_xp_gain_mult = 0.5
+    cultural_head_fascination_mult = 1
+    same_opinion = 10.0
+    
+    martial = 10
+    stewardship = 25
+    intrigue = 5
+    learning = 25
+
+    immortal = yes
+    set_immortal_age = 25
+    shown_in_ruler_designer = yes
+    ruler_designer_cost = 250
+
+    flag = can_found_immortal_council_decision
+    
+    desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_immortal_desc
+			}
+			desc = trait_immortal_character_desc
+		}
+	}
+}
+renegade_immortal = {
+    education = no
+    catergory = fame
+    good = no
+
+    monthly_lifestyle_xp_gain_mult = -1
+    cultural_head_fascination_mult = -1
+    same_opinion = 10.0
+
+    martial = 5
+    stewardship = -12
+    intrigue = -10
+    learning = -5
+
+    flag = destruction_spree_decision
+
+    desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_renegade_immortal_desc
+			}
+			desc = trait_renegade_immortal_character_desc
+		}
+	}
+}
+mended_immortal = {
+    education = no
+    catergory = fame
+    good = yes
+
+    desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_mended_immortal_desc
+			}
+			desc = trait_mended_immortal_character_desc
+		}
+	}
+}
+
+## IMMORTAL DECISION TRAITS
+immortal_saint = {
+    education = no
+    catergory = fame
+    good = yes
+
+    desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_immortal_saint_desc
+			}
+			desc = trait_immortal_saint_character_desc
+		}
+	}
+}
+immortal_witch {
+    education = no
+    catergory = fame
+    good = no
+
+    desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_immortal_witch_desc
+			}
+			desc = trait_immortal_witch_character_desc
+		}
+	}
+}
+immortal_demon = {
+    education = no
+    catergory = fame
+    good = no
+
+    desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_immortal_demon_desc
+			}
+			desc = trait_immortal_demon_character_desc
+		}
+	}
+}
+avatar_of_god = {
+    education = no
+    catergory = fame
+    good = yes
+
+    desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { NOT = { exists = this } }
+				desc = trait_avatar_of_god_desc
+			}
+			desc = trait_avatar_of_god_character_desc
+		}
+	}
+}

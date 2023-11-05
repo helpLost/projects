@@ -1,0 +1,26 @@
+﻿l_english:
+ trait_immortal:0 "Immortal"
+ trait_immortal_desc:0 "An immortal being will never age or die of natural means."
+ trait_immortal_character_desc:1 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has been granted divine immortality by...something. They will never age or die of natural means."
+
+ ## IMMORTAL EVENT TRAITS
+ trait_renegade_immortal:0 "Renegade Immortal"
+ trait_renegade_immortal_desc:0 "This character has unfortunately been broken by the massive overflow of memories, knowledge, and experiences that come with being immortal."
+ trait_renegade_immortal_character_desc:1 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has gone insane from the massive overflow of memories, knowledge, and experiences that come with being immortal"
+ trait_mended_immortal:0 "Mended Immortal"
+ trait_mended_immortal_desc:0 "This character has been remended by countless years of effort from their peers, brought back from de facto death stronger and more magically powerful than ever."
+ trait_mendedimmortal_character_desc:1 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has been remended by countless years of effort from their peers, brought back from de facto death stronger and more magically powerful than ever."
+
+ ## IMMORTAL DECISION TRAITS
+ trait_immortal_saint:0 "Holy Saint"
+ trait_immortal_saint_desc:0 "The Holy Saint is a religious figure that realistically outshines even the head of faith. They are the leading source for theological discourse, clarification, and use."
+ trait_immortal_saint_character_desc:1 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a religious entity that outshines even the head of faith."
+ trait_immortal_witch:0 "High Witch"
+ trait_immortal_witch_desc:0 "A High Witch is a leader of a nation- or even continent-large witch coven. They have knowledge surpassing almost all others and can cast spells nobody else can."
+ trait_immortal_witch_character_desc:1 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is the leader of a large witch coven."
+ trait_immortal_demon:0 "Demon"
+ trait_immortal_demon_desc:0 "A demon was granted their great powers via evil means, and is therefore shunned by all faithful."
+ trait_immortal_demon_character_desc:1 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is a creature of great evil, shunned by all faithful."
+ trait_avatar_of_god:0 "The Avatar of God"
+ trait_avatar_of_god_desc:0 "God has come from above and granted this being His power. Their orders are to be followed or retribution by the church will be swift."
+ trait_avatar_of_god_character_desc:1 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has been granted the power of a god. They are not to be questioned."
