@@ -9,7 +9,7 @@
  trait_renegade_immortal_character_desc:1 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has gone insane from the massive overflow of memories, knowledge, and experiences that come with being immortal"
  trait_mended_immortal:0 "Mended Immortal"
  trait_mended_immortal_desc:0 "This character has been remended by countless years of effort from their peers, brought back from de facto death stronger and more magically powerful than ever."
- trait_mendedimmortal_character_desc:1 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has been remended by countless years of effort from their peers, brought back from de facto death stronger and more magically powerful than ever."
+ trait_mended_immortal_character_desc:1 "[ROOT.GetCharacter.GetFirstNameNoTooltip] has been remended by countless years of effort from their peers, brought back from de facto death stronger and more magically powerful than ever."
 
  ## IMMORTAL DECISION TRAITS
  trait_immortal_saint:0 "Holy Saint"
